@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/KaouechHaythem/micromap-kubernetes-config.git
     targetRevision: HEAD
-    path: main
+    path: guestbook
   destination:
     server: https://kubernetes.default.svc
     namespace: micromap
