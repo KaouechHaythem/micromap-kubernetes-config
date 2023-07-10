@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micromap-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micromap-frontend
+  template:
+    metadata:
+      labels:
+        app: micromap-frontend
+    spec:
+      containers:
+        - name: micromap-frontend
+          image: haythemkaouech/micromap-frontend:9.0
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micromap-frontend-service
+spec:
+  selector:
+    app: micromap-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30007
+  type: NodePort

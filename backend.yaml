@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micromap-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micromap-backend
+  template:
+    metadata:
+      labels:
+        app: micromap-backend
+    spec:
+      containers:
+        - name: micromap-backend
+          image: haythemkaouech/micromap-backend:5.0
+          ports:
+            - containerPort: 8081
+          env:
+            - name: NEO4J_URI
+              value: neo4j+s://ab07c988.databases.neo4j.io
+            - name: NEO4J_USER
+              value: neo4j
+            - name: NEO4J_PASS
+              value: HaKUY0hVELvz7Uy4X5VuoaJbcSLHAtqa2sAoqlo6V3s
+            - name: PORT
+              value: "8081"
+            - name: FRONTEND
+              value: http://frontend.micromap.com
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micromap-backend-service
+spec:
+  selector:
+    app: micromap-backend
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+      nodePort: 30008
+  type: NodePort
