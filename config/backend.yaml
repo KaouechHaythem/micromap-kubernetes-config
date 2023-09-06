@@ -19,11 +19,11 @@ spec:
             - containerPort: 8081
           env:
             - name: NEO4J_URI
-              value: neo4j+s://ab07c988.databases.neo4j.io
+              value: 
             - name: NEO4J_USER
               value: neo4j
             - name: NEO4J_PASS
-              value: HaKUY0hVELvz7Uy4X5VuoaJbcSLHAtqa2sAoqlo6V3s
+              value: 
             - name: PORT
               value: "8081"
             - name: FRONTEND
